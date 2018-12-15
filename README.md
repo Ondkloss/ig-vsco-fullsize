@@ -2,7 +2,7 @@
 
 Click extension icon to open current Instagram image in the highest resolution possible.
 
-Released on [Chrome Web Store](https://chrome.google.com/webstore/detail/jhdlbfonobkeafhiapgmmammblbkjjhf). See example below:
+Released on [Chrome Web Store](https://chrome.google.com/webstore/detail/jhdlbfonobkeafhiapgmmammblbkjjhf) and [Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/instagram-fullsize/). See example below:
 
 ![Example usage](example.gif)
 
