@@ -6,7 +6,7 @@ Released on [Chrome Web Store](https://chrome.google.com/webstore/detail/jhdlbfo
 
 ![Example usage](example.gif)
 
-Functionality tested on 2018-12-11.
+Functionality tested on 2019-09-11.
 
 ## License
 
