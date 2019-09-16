@@ -1,5 +1,6 @@
 "use strict";
 
+// Instagram functionality
 function processApiResponse(tab, json) {
     const root = json['graphql']['shortcode_media'];
 
@@ -38,6 +39,7 @@ function processImageNode(tab, resources) {
     openUrl(tab, max.src);
 }
 
+// General functionality
 function openUrl(tab, url) {
     chrome.tabs.create({ url: url, index: tab.index + 1 });
 }
@@ -51,6 +53,17 @@ chrome.browserAction.onClicked.addListener(function (tab) {
             processApiResponse(tab, json);
         }).catch(function (error) {
             console.log('Error: ' + error);
+        });
+    }
+    else if (/^(https:\/\/vsco.co\/.+\/media\/[a-zA-Z0-9_-]+)$/.test(tab.url)) {
+        console.log('Opening fullsize with URL: ' + tab.url);
+        chrome.tabs.sendMessage(tab.id, "getVscoImageUrl", null, function (response) {
+            if ('url' in response && response.url) {
+                openUrl(tab, response.url);
+            }
+            else {
+                console.log('Error: Could not find any image URL');
+            }
         });
     }
     else {

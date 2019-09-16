@@ -1,2 +1,2 @@
 import shutil
-shutil.make_archive('instagram-fullsize', 'zip', 'src')
+shutil.make_archive('ig-vsco-fullsize', 'zip', 'src')

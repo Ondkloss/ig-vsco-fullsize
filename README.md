@@ -1,12 +1,27 @@
-# Instagram fullsize
+# IG+VSCO fullsize
 
-Click extension icon to open current Instagram image in the highest resolution possible.
+Click extension icon to open current Instagram or VSCO image in the highest resolution possible.
 
-Released on [Chrome Web Store](https://chrome.google.com/webstore/detail/jhdlbfonobkeafhiapgmmammblbkjjhf) and [Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/instagram-fullsize/). See example below:
+Released on [Chrome Web Store](https://chrome.google.com/webstore/detail/ig+vsco-fullsize/ngdfnokoifnihnknoibnbhfhnkmlfocb) and [Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/ig-vsco-fullsize/). See example below:
 
 ![Example usage](example.gif)
 
-Functionality tested on 2019-09-11.
+Functionality tested on 2019-09-16.
+
+## Changelog
+
+### 1.2
+
+Added wider range of supported formats for Instagram:
+
+- Supports single and multiple images
+- Supports single and multiple videos
+
+Added functionality to open VSCO images inn the highest resolution possible.
+
+### 1.0
+
+Initial store release. Basic Instagram functionality.
 
 ## License
 
