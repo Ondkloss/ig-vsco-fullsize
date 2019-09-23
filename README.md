@@ -10,6 +10,10 @@ Functionality tested on 2019-09-16.
 
 ## Changelog
 
+### 1.2.1
+
+Added VSCO video support.
+
 ### 1.2
 
 Added wider range of supported formats for Instagram:

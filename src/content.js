@@ -1,7 +1,7 @@
 chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
-    if (message == 'getVscoImageUrl') {
-        console.log('Received getVscoImageUrl message');
-        sendResponse({ url: findImage() });
+    if (message == 'getVscoUrl') {
+        console.log('Received getVscoUrl message');
+        sendResponse({ url: findUrl() });
     }
     else {
         console.log('Received unknown message');
@@ -9,8 +9,15 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
     }
 });
 
-function findImage() {
-    let url = document.querySelector("meta[property='og:image']").content;
-    url = url.substring(0, url.lastIndexOf('?'));
-    return url;
+function findUrl() {
+    const imageElement = document.querySelector("meta[property='og:image']");
+    const videoElement = document.querySelector("meta[property='og:video']");
+
+    if (videoElement) {
+        return videoElement.content;
+    }
+    else {
+        const content = imageElement.content;
+        return content.substring(0, content.lastIndexOf('?'));
+    }
 }

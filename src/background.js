@@ -57,12 +57,12 @@ chrome.browserAction.onClicked.addListener(function (tab) {
     }
     else if (/^(https:\/\/vsco.co\/.+\/media\/[a-zA-Z0-9_-]+)$/.test(tab.url)) {
         console.log('Opening fullsize with URL: ' + tab.url);
-        chrome.tabs.sendMessage(tab.id, "getVscoImageUrl", null, function (response) {
+        chrome.tabs.sendMessage(tab.id, "getVscoUrl", null, function (response) {
             if ('url' in response && response.url) {
                 openUrl(tab, response.url);
             }
             else {
-                console.log('Error: Could not find any image URL');
+                console.log('Error: Could not find any URL');
             }
         });
     }
