@@ -1,10 +1,12 @@
 chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
+    console.log('Received ' + message + ' message');
     if (message == 'getVscoUrl') {
-        console.log('Received getVscoUrl message');
         sendResponse({ url: findUrl() });
     }
+    else if (message == 'getVscoProfileUrl') {
+        sendResponse({ url: findProfileUrl() });
+    }
     else {
-        console.log('Received unknown message');
         sendResponse({});
     }
 });
@@ -20,4 +22,10 @@ function findUrl() {
         const content = imageElement.content;
         return content.substring(0, content.lastIndexOf('?'));
     }
+}
+
+function findProfileUrl() {
+    const imageElement = document.querySelector("img[class='css-147a4kv']");
+    const content = imageElement.src;
+    return content.substring(0, content.lastIndexOf('?'));
 }

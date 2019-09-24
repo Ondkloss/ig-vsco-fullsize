@@ -6,9 +6,14 @@ Released on [Chrome Web Store](https://chrome.google.com/webstore/detail/ig+vsco
 
 ![Example usage](example.gif)
 
-Functionality tested on 2019-09-16.
+Functionality tested on 2019-09-24.
 
 ## Changelog
+
+### 1.2.2
+
+- Added VSCO and Instagram profile picture support
+- Improved tab placement/inheritance
 
 ### 1.2.1
 
@@ -33,6 +38,6 @@ The software in this repo is released under [CC-BY-SA 4.0](https://creativecommo
 
 ## Credits
 
-The approach used is derived from [this StackOverflow answer](https://stackoverflow.com/a/48296606/2732991).
+The Instagram approach used is derived from [this StackOverflow answer](https://stackoverflow.com/a/48296606/2732991).
 
 The logo icon is the "camera" icon from [Material Design Icons](https://materialdesignicons.com/).

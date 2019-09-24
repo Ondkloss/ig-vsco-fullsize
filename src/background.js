@@ -19,6 +19,13 @@ function processApiResponse(tab, json) {
     }
 }
 
+function processProfileApiResponse(tab, json) {
+    const profile_hd = json['graphql']['user']['profile_pic_url_hd'];
+    const profile = json['graphql']['user']['profile_pic_url'];
+    const url = profile_hd || profile;
+    openUrl(tab, url);
+}
+
 function processNode(tab, node) {
     // Video
     if ('video_url' in node) {
@@ -41,30 +48,67 @@ function processImageNode(tab, resources) {
 
 // General functionality
 function openUrl(tab, url) {
-    chrome.tabs.create({ url: url, index: tab.index + 1 });
+    chrome.tabs.create({
+        url: url,
+        index: tab.index + 1,
+        openerTabId: tab.id,
+    });
 }
 
 chrome.browserAction.onClicked.addListener(function (tab) {
-    if (/^(https:\/\/www\.instagram\.com\/p\/[a-zA-Z0-9_-]+)\/*$/.test(tab.url)) {
-        console.log('Opening fullsize with URL: ' + tab.url);
-        fetch(tab.url + '?__a=1').then(function (response) {
-            return response.json();
-        }).then(function (json) {
-            processApiResponse(tab, json);
-        }).catch(function (error) {
-            console.log('Error: ' + error);
-        });
+    console.log('Opening fullsize with URL: ' + tab.url);
+    if (tab.url.startsWith('https://www.instagram.com/')) {
+        // Accessing a profile image
+        if (/^(https:\/\/www\.instagram\.com\/[a-zA-Z0-9_-]+)\/*$/.test(tab.url)) {
+            // TODO: Higher resolution
+            fetch(tab.url + '?__a=1').then(function (response) {
+                return response.json();
+            }).then(function (json) {
+                processProfileApiResponse(tab, json);
+            }).catch(function (error) {
+                console.log('Error: ' + error);
+            });
+        }
+        // Accessing an image/video
+        if (/^(https:\/\/www\.instagram\.com\/p\/[a-zA-Z0-9_-]+)\/*$/.test(tab.url)) {
+            fetch(tab.url + '?__a=1').then(function (response) {
+                return response.json();
+            }).then(function (json) {
+                processApiResponse(tab, json);
+            }).catch(function (error) {
+                console.log('Error: ' + error);
+            });
+        }
+        else {
+            console.log('You tried to open Instagram fullsize with URL: ' + tab.url + ', but it does not match any known pattern');
+        }
     }
-    else if (/^(https:\/\/vsco.co\/.+\/media\/[a-zA-Z0-9_-]+)$/.test(tab.url)) {
-        console.log('Opening fullsize with URL: ' + tab.url);
-        chrome.tabs.sendMessage(tab.id, "getVscoUrl", null, function (response) {
-            if ('url' in response && response.url) {
-                openUrl(tab, response.url);
-            }
-            else {
-                console.log('Error: Could not find any URL');
-            }
-        });
+    else if (tab.url.startsWith('https://vsco.co/')) {
+        // Accessing a profile image
+        if (/^(https:\/\/vsco.co\/.+\/images\/[0-9]+)$/.test(tab.url)) {
+            chrome.tabs.sendMessage(tab.id, "getVscoProfileUrl", null, function (response) {
+                if ('url' in response && response.url) {
+                    openUrl(tab, response.url);
+                }
+                else {
+                    console.log('Error: Could not find any URL');
+                }
+            });
+        }
+        // Accessing an image/video
+        else if (/^(https:\/\/vsco.co\/.+\/media\/[a-zA-Z0-9_-]+)$/.test(tab.url)) {
+            chrome.tabs.sendMessage(tab.id, "getVscoUrl", null, function (response) {
+                if ('url' in response && response.url) {
+                    openUrl(tab, response.url);
+                }
+                else {
+                    console.log('Error: Could not find any URL');
+                }
+            });
+        }
+        else {
+            console.log('You tried to open VSCO fullsize with URL: ' + tab.url + ', but it does not match any known pattern');
+        }
     }
     else {
         console.log('You tried to open fullsize with URL: ' + tab.url + ', but it does not match any known pattern');
