@@ -10,6 +10,10 @@ Functionality tested on 2019-09-24.
 
 ## Changelog
 
+### 1.2.3
+
+- Fixed broken VSCO profile picture support
+
 ### 1.2.2
 
 - Added VSCO and Instagram profile picture support

@@ -70,7 +70,7 @@ chrome.browserAction.onClicked.addListener(function (tab) {
             });
         }
         // Accessing an image/video
-        if (/^(https:\/\/www\.instagram\.com\/p\/[a-zA-Z0-9_-]+)\/*$/.test(tab.url)) {
+        else if (/^(https:\/\/www\.instagram\.com\/p\/[a-zA-Z0-9_-]+)\/*$/.test(tab.url)) {
             fetch(tab.url + '?__a=1').then(function (response) {
                 return response.json();
             }).then(function (json) {
