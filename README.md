@@ -6,9 +6,13 @@ Released on [Chrome Web Store](https://chrome.google.com/webstore/detail/ig+vsco
 
 ![Example usage](example.gif)
 
-Functionality tested on 2019-09-24.
+Functionality tested on 2019-11-26.
 
 ## Changelog
+
+### 1.2.4
+
+Added Instagram HD profile picture support. This requires being logged in, but falls back to default profile picture.
 
 ### 1.2.3
 

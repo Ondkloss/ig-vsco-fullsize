@@ -1,11 +1,14 @@
 {
     "name": "__MSG_appName__",
     "description": "__MSG_appDesc__",
-    "version": "1.2.3",
+    "version": "1.2.4",
     "manifest_version": 2,
     "default_locale": "en",
     "permissions": [
         "activeTab",
+        "webRequest",
+        "webRequestBlocking",
+        "https://i.instagram.com/api/v1/users/*",
         "https://www.instagram.com/*",
         "https://vsco.co/*"
     ],

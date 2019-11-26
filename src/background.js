@@ -20,10 +20,27 @@ function processApiResponse(tab, json) {
 }
 
 function processProfileApiResponse(tab, json) {
+    const profile_id = json['graphql']['user']['id'];
     const profile_hd = json['graphql']['user']['profile_pic_url_hd'];
     const profile = json['graphql']['user']['profile_pic_url'];
-    const url = profile_hd || profile;
-    openUrl(tab, url);
+    const fallback_url = profile_hd || profile;
+    let opened = false;
+
+    fetch(`https://i.instagram.com/api/v1/users/${profile_id}/info/`)
+        .then(result => result.json())
+        .then(json => {
+            // Use 1080x1080 (or high res) if available
+            if (['hd_profile_pic_url_info'] in json['user']) {
+                const url = json['user']['hd_profile_pic_url_info']['url'];
+                openUrl(tab, url);
+                opened = true;
+            }
+        }).catch(reason => console.error(reason))
+        .finally(() => {
+            if (!opened) {
+                openUrl(tab, fallback_url);
+            }
+        });
 }
 
 function processNode(tab, node) {
@@ -54,6 +71,20 @@ function openUrl(tab, url) {
         openerTabId: tab.id,
     });
 }
+
+chrome.webRequest.onBeforeSendHeaders.addListener(
+    function (details) {
+        for (var i = 0; i < details.requestHeaders.length; ++i) {
+            if (details.requestHeaders[i].name === 'User-Agent') {
+                details.requestHeaders[i].value = 'Instagram 64.0.0.14.96';
+                break;
+            }
+        }
+        return { requestHeaders: details.requestHeaders };
+    },
+    { urls: ["https://i.instagram.com/api/v1/users/*"] },
+    ["blocking", "requestHeaders"]
+);
 
 chrome.browserAction.onClicked.addListener(function (tab) {
     console.log('Opening fullsize with URL: ' + tab.url);
