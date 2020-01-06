@@ -1,7 +1,7 @@
 {
     "name": "__MSG_appName__",
     "description": "__MSG_appDesc__",
-    "version": "1.2.4",
+    "version": "1.2.5",
     "manifest_version": 2,
     "default_locale": "en",
     "permissions": [
@@ -23,7 +23,18 @@
                 "https://vsco.co/*"
             ],
             "js": [
-                "content.js"
+                "content_vsco.js"
+            ]
+        },
+        {
+            "matches": [
+                "https://www.instagram.com/*"
+            ],
+            "js": [
+                "content_ig.js"
+            ],
+            "css": [
+                "content_ig.css"
             ]
         }
     ],

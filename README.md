@@ -10,6 +10,10 @@ Functionality tested on 2019-11-26.
 
 ## Changelog
 
+### 1.2.5
+
+Removed blocking Instagram login dialog.
+
 ### 1.2.4
 
 Added Instagram HD profile picture support. This requires being logged in, but falls back to default profile picture.
