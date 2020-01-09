@@ -116,7 +116,7 @@ chrome.browserAction.onClicked.addListener(function (tab) {
     }
     else if (tab.url.startsWith('https://vsco.co/')) {
         // Accessing a profile image
-        if (/^(https:\/\/vsco.co\/.+\/images\/[0-9]+)$/.test(tab.url)) {
+        if (/^(https:\/\/vsco.co\/.+\/images(\/[0-9]+)?)$/.test(tab.url)) {
             chrome.tabs.sendMessage(tab.id, "getVscoProfileUrl", null, function (response) {
                 if ('url' in response && response.url) {
                     openUrl(tab, response.url);

@@ -1,14 +1,18 @@
 # IG+VSCO fullsize
 
-Click extension icon to open current Instagram or VSCO image in the highest resolution possible.
+Click extension icon to open current Instagram or VSCO image or profile picture in the highest resolution possible.
 
 Released on [Chrome Web Store](https://chrome.google.com/webstore/detail/ig+vsco-fullsize/ngdfnokoifnihnknoibnbhfhnkmlfocb) and [Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/ig-vsco-fullsize/). See example below:
 
 ![Example usage](example.gif)
 
-Functionality tested on 2019-11-26.
+Functionality tested on 2020-01-09.
 
 ## Changelog
+
+### 1.2.6
+
+Fixed broken VSCO profile picture after they started using infinite scroll ("load more").
 
 ### 1.2.5
 
