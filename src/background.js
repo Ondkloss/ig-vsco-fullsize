@@ -89,10 +89,13 @@ chrome.webRequest.onBeforeSendHeaders.addListener(
 chrome.browserAction.onClicked.addListener(function (tab) {
     console.log('Opening fullsize with URL: ' + tab.url);
     if (tab.url.startsWith('https://www.instagram.com/')) {
+        const profileRegex = /^(https:\/\/www\.instagram\.com\/[a-zA-Z0-9._-]+)\/?(\?.+)?$/;
+        const mediaRegex = /^(https:\/\/www\.instagram\.com\/p\/[a-zA-Z0-9_-]+)\/?(\?.+)?$/;
+
         // Accessing a profile image
-        if (/^(https:\/\/www\.instagram\.com\/[a-zA-Z0-9_-]+)\/*$/.test(tab.url)) {
-            // TODO: Higher resolution
-            fetch(tab.url + '?__a=1').then(function (response) {
+        if (profileRegex.test(tab.url)) {
+            const userUrl = profileRegex.exec(tab.url)[1];
+            fetch(userUrl + '?__a=1').then(function (response) {
                 return response.json();
             }).then(function (json) {
                 processProfileApiResponse(tab, json);
@@ -101,8 +104,9 @@ chrome.browserAction.onClicked.addListener(function (tab) {
             });
         }
         // Accessing an image/video
-        else if (/^(https:\/\/www\.instagram\.com\/p\/[a-zA-Z0-9_-]+)\/*$/.test(tab.url)) {
-            fetch(tab.url + '?__a=1').then(function (response) {
+        else if (mediaRegex.test(tab.url)) {
+            const mediaUrl = mediaRegex.exec(tab.url)[1];
+            fetch(mediaUrl + '?__a=1').then(function (response) {
                 return response.json();
             }).then(function (json) {
                 processApiResponse(tab, json);
@@ -115,8 +119,11 @@ chrome.browserAction.onClicked.addListener(function (tab) {
         }
     }
     else if (tab.url.startsWith('https://vsco.co/')) {
+        const profileRegex = /^(https:\/\/vsco.co\/.+\/images(\/[0-9]+)?)$/;
+        const mediaRegex = /^(https:\/\/vsco.co\/.+\/media\/[a-zA-Z0-9_-]+)$/;
+
         // Accessing a profile image
-        if (/^(https:\/\/vsco.co\/.+\/images(\/[0-9]+)?)$/.test(tab.url)) {
+        if (profileRegex.test(tab.url)) {
             chrome.tabs.sendMessage(tab.id, "getVscoProfileUrl", null, function (response) {
                 if ('url' in response && response.url) {
                     openUrl(tab, response.url);
@@ -127,7 +134,7 @@ chrome.browserAction.onClicked.addListener(function (tab) {
             });
         }
         // Accessing an image/video
-        else if (/^(https:\/\/vsco.co\/.+\/media\/[a-zA-Z0-9_-]+)$/.test(tab.url)) {
+        else if (mediaRegex.test(tab.url)) {
             chrome.tabs.sendMessage(tab.id, "getVscoUrl", null, function (response) {
                 if ('url' in response && response.url) {
                     openUrl(tab, response.url);

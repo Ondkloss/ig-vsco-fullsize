@@ -6,9 +6,13 @@ Released on [Chrome Web Store](https://chrome.google.com/webstore/detail/ig+vsco
 
 ![Example usage](example.gif)
 
-Functionality tested on 2020-01-09.
+Functionality tested on 2020-01-12.
 
 ## Changelog
+
+### 1.2.7
+
+Fixed broken Instagram picture under certain conditions.
 
 ### 1.2.6
 
