@@ -6,9 +6,13 @@ Released on [Chrome Web Store](https://chrome.google.com/webstore/detail/ig+vsco
 
 ![Example usage](example.gif)
 
-Functionality tested on 2020-01-12.
+Functionality tested on 2020-03-13.
 
 ## Changelog
+
+### 1.2.8
+
+Fixed broken VSCO profile picture after they started using "/gallery" postfix for URL.
 
 ### 1.2.7
 

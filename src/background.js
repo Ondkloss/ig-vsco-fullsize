@@ -119,11 +119,12 @@ chrome.browserAction.onClicked.addListener(function (tab) {
         }
     }
     else if (tab.url.startsWith('https://vsco.co/')) {
-        const profileRegex = /^(https:\/\/vsco.co\/.+\/images(\/[0-9]+)?)$/;
+        const profileRegex1 = /^(https:\/\/vsco.co\/.+\/images(\/[0-9]+)?)$/;
+        const profileRegex2 = /^(https:\/\/vsco.co\/.+\/gallery)$/;
         const mediaRegex = /^(https:\/\/vsco.co\/.+\/media\/[a-zA-Z0-9_-]+)$/;
 
         // Accessing a profile image
-        if (profileRegex.test(tab.url)) {
+        if (profileRegex1.test(tab.url) || profileRegex2.test(tab.url)) {
             chrome.tabs.sendMessage(tab.id, "getVscoProfileUrl", null, function (response) {
                 if ('url' in response && response.url) {
                     openUrl(tab, response.url);
