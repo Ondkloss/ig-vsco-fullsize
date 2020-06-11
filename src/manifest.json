@@ -1,7 +1,7 @@
 {
     "name": "__MSG_appName__",
     "description": "__MSG_appDesc__",
-    "version": "1.2.8",
+    "version": "1.3.0",
     "manifest_version": 2,
     "default_locale": "en",
     "permissions": [
@@ -10,7 +10,8 @@
         "webRequestBlocking",
         "https://i.instagram.com/api/v1/users/*",
         "https://www.instagram.com/*",
-        "https://vsco.co/*"
+        "https://vsco.co/*",
+        "https://www.tiktok.com/*"
     ],
     "background": {
         "scripts": [
@@ -35,6 +36,14 @@
             ],
             "css": [
                 "content_ig.css"
+            ]
+        },
+        {
+            "matches": [
+                "https://www.tiktok.com/*"
+            ],
+            "js": [
+                "content_tiktok.js"
             ]
         }
     ],
