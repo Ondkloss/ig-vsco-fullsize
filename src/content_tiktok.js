@@ -12,7 +12,10 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
 });
 
 function findUrl() {
-    return undefined;
+    const element = document.getElementById('videoObject');
+    const json = JSON.parse(element.innerHTML);
+    const contentUrl = json.contentUrl;
+    return contentUrl;
 }
 
 function findProfileUrl() {
