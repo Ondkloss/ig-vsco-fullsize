@@ -19,5 +19,9 @@ function findUrl() {
 }
 
 function findProfileUrl() {
-    return undefined;
+    const element = document.getElementById('__NEXT_DATA__');
+    const json = JSON.parse(element.innerHTML);
+    const avatarMedium = json.props.pageProps.userInfo.user.avatarMedium;
+    const result = avatarMedium.replace("720x720", "1080x1080");
+    return result;
 }

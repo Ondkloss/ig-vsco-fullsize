@@ -153,7 +153,7 @@ chrome.browserAction.onClicked.addListener(function (tab) {
         // https://www.tiktok.com/@user.name
         const profileRegex = /^(https:\/\/www\.tiktok\.com\/[@a-zA-Z0-9._-]+)\/?$/;
         // https://www.tiktok.com/@user.name/video/1111222233334444555?lang=en
-        const mediaRegex = /^(https:\/\/www\.tiktok\.com\/[@a-zA-Z0-9._-]+\/video\/[0-9]+\?lang=.+)?$/;
+        const mediaRegex = /^(https:\/\/www\.tiktok\.com\/[@a-zA-Z0-9._-]+\/video\/[0-9]+(\?lang=.+)?)$/;
 
         // Accessing a profile image
         if (profileRegex.test(tab.url)) {
@@ -176,6 +176,9 @@ chrome.browserAction.onClicked.addListener(function (tab) {
                     console.log('Error: Could not find any URL');
                 }
             });
+        }
+        else {
+            console.log('You tried to open TikTok fullsize with URL: ' + tab.url + ', but it does not match any known pattern');
         }
     }
     else {
