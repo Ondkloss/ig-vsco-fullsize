@@ -13,15 +13,32 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
 
 function findUrl() {
     const element = document.getElementById('videoObject');
-    const json = JSON.parse(element.innerHTML);
-    const contentUrl = json.contentUrl;
-    return contentUrl;
+
+    if (element) {
+        const json = JSON.parse(element.innerHTML);
+        const contentUrl = json.contentUrl;
+        return contentUrl;
+    }
+    else {
+        const source = document.getElementsByClassName('video-player')[0].src;
+        return source;
+    }
+
+
 }
 
 function findProfileUrl() {
     const element = document.getElementById('__NEXT_DATA__');
     const json = JSON.parse(element.innerHTML);
-    const avatarMedium = json.props.pageProps.userInfo.user.avatarMedium;
-    const result = avatarMedium.replace("720x720", "1080x1080");
-    return result;
+
+    if (json && 'userInfo' in json.props.pageProps) {
+        const avatarMedium = json.props.pageProps.userInfo.user.avatarMedium;
+        const result = avatarMedium.replace("720x720", "1080x1080");
+        return result;
+    }
+    else {
+        const source = document.querySelector('.avatar > .avatar-wrapper').src;
+        const result = source.replace("720x720", "1080x1080");
+        return result;
+    }
 }
