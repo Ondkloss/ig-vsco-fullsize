@@ -6,9 +6,16 @@ Released on [Chrome Web Store](https://chrome.google.com/webstore/detail/ig+vsco
 
 ![Example usage](example.gif)
 
-Functionality tested on 2020-03-13.
+Functionality tested on 2020-06-22.
 
 ## Changelog
+
+### 1.3.0
+
+- Allowed browsing Instagram without being logged in
+- Added TikTok support for video and profile picture
+- Fixed removal of Instagram login dialog
+- Fixed VSCO profile picture
 
 ### 1.2.8
 

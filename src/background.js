@@ -151,7 +151,7 @@ chrome.browserAction.onClicked.addListener(function (tab) {
     }
     else if (tab.url.startsWith('https://www.tiktok.com/')) {
         // https://www.tiktok.com/@user.name
-        const profileRegex = /^(https:\/\/www\.tiktok\.com\/[@a-zA-Z0-9._-]+)\/?$/;
+        const profileRegex = /^(https:\/\/www\.tiktok\.com\/[@a-zA-Z0-9._-]+)(\?lang=.+)?\/?$/;
         // https://www.tiktok.com/@user.name/video/1111222233334444555?lang=en
         const mediaRegex = /^(https:\/\/www\.tiktok\.com\/[@a-zA-Z0-9._-]+\/video\/[0-9]+(\?lang=.+)?)$/;
 

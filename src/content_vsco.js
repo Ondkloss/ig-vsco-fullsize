@@ -25,7 +25,7 @@ function findUrl() {
 }
 
 function findProfileUrl() {
-    const imageElement = document.querySelector("img[class*='-UserProfileDetail']");
+    const imageElement = document.querySelector("img[class*='css-1gtfl7l']");
     const content = imageElement.src;
     return content.substring(0, content.lastIndexOf('?'));
 }
