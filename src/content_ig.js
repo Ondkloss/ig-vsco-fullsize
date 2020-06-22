@@ -1,7 +1,12 @@
 const notLoggedIn = document.documentElement.classList.contains("not-logged-in");
 
-function redirect(element) {
-    window.location.href = element.getAttribute('href');
+function redirect(element, event) {
+    if(event.ctrlKey || event.metaKey) {
+        window.open(element.getAttribute('href'));
+    }
+    else {
+        window.location.href = element.getAttribute('href');
+    }
 }
 
 if (notLoggedIn) {
@@ -26,7 +31,7 @@ if (notLoggedIn) {
                         childDivClasses.every(e => addedNode.firstChild.classList.contains(e))) {
                         addedNode.childNodes.forEach(d => {
                             const anchor = d.firstChild;
-                            d.addEventListener('click', () => redirect(anchor))
+                            d.addEventListener('click', (event) => redirect(anchor, event))
                         });
                     }
                 }
@@ -44,6 +49,6 @@ if (notLoggedIn) {
 
     for (const div of divs) {
         const anchor = div.firstChild;
-        div.addEventListener('click', () => redirect(anchor));
+        div.addEventListener('click', (event) => redirect(anchor, event));
     }
 }

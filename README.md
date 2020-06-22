@@ -10,6 +10,10 @@ Functionality tested on 2020-06-22.
 
 ## Changelog
 
+### 1.3.1
+
+Added ctrl/command-click to Instagram "not logged in" functionality. This allows for opening in new window, so that you don't loose your scroll position.
+
 ### 1.3.0
 
 - Allowed browsing Instagram without being logged in
