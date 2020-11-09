@@ -1,14 +1,21 @@
 # IG+VSCO fullsize
 
-Click extension icon to open current Instagram or VSCO image or profile picture in the highest resolution possible.
+Click extension icon to open current Instagram, VSCO or TikTok image or profile picture in the highest resolution possible.
 
 Released on [Chrome Web Store](https://chrome.google.com/webstore/detail/ig+vsco-fullsize/ngdfnokoifnihnknoibnbhfhnkmlfocb) and [Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/ig-vsco-fullsize/). See example below:
 
 ![Example usage](example.gif)
 
-Functionality tested on 2020-06-22.
+Functionality tested on 2020-11-09.
 
 ## Changelog
+
+### 1.3.2
+
+- Added support for opening reels. Thanks to [@JohnPlanetary](https://github.com/JohnPlanetary) for reporting issue
+- Fixed VSCO profile picture after class name change
+- Fixed TikTok profile issue, but still has trouble after browsing between profiles
+- Known issue with HD profile pictures after API-change still being investigated
 
 ### 1.3.1
 

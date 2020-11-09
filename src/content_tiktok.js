@@ -23,8 +23,6 @@ function findUrl() {
         const source = document.getElementsByClassName('video-player')[0].src;
         return source;
     }
-
-
 }
 
 function findProfileUrl() {
@@ -32,8 +30,16 @@ function findProfileUrl() {
     const json = JSON.parse(element.innerHTML);
 
     if (json && 'userInfo' in json.props.pageProps) {
-        const avatarMedium = json.props.pageProps.userInfo.user.avatarMedium;
-        const result = avatarMedium.replace("720x720", "1080x1080");
+        let result = json.props.pageProps.userInfo.user.avatarLarger;
+
+        if(!result) {
+            result = json.props.pageProps.userInfo.user.avatarMedium;
+        }
+
+        if(!result) {
+            result = json.props.pageProps.userInfo.user.avatarThumb;
+        }
+
         return result;
     }
     else {

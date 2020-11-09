@@ -90,7 +90,7 @@ chrome.browserAction.onClicked.addListener(function (tab) {
     console.log('Opening fullsize with URL: ' + tab.url);
     if (tab.url.startsWith('https://www.instagram.com/')) {
         const profileRegex = /^(https:\/\/www\.instagram\.com\/[a-zA-Z0-9._-]+)\/?(\?.+)?$/;
-        const mediaRegex = /^(https:\/\/www\.instagram\.com\/p\/[a-zA-Z0-9_-]+)\/?(\?.+)?$/;
+        const mediaRegex = /^(https:\/\/www\.instagram\.com\/(p|reel)\/[a-zA-Z0-9_-]+)\/?(\?.+)?$/;
 
         // Accessing a profile image
         if (profileRegex.test(tab.url)) {
@@ -103,7 +103,7 @@ chrome.browserAction.onClicked.addListener(function (tab) {
                 console.log('Error: ' + error);
             });
         }
-        // Accessing an image/video
+        // Accessing an image/video or a reel
         else if (mediaRegex.test(tab.url)) {
             const mediaUrl = mediaRegex.exec(tab.url)[1];
             fetch(mediaUrl + '?__a=1').then(function (response) {
