@@ -10,6 +10,10 @@ Functionality tested on 2020-11-09.
 
 ## Changelog
 
+### 1.3.3
+
+- Fix for removing login dialog when scrolling without being logged in
+
 ### 1.3.2
 
 - Added support for opening reels. Thanks to [@JohnPlanetary](https://github.com/JohnPlanetary) for reporting issue

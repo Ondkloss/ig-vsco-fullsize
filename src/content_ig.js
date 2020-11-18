@@ -13,7 +13,7 @@ if (notLoggedIn) {
     const MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
 
     const loginParent = ["RnEpo", "_Yhr4"];
-    const loginChild = ["pbNvD", "fPMEg", "_8PWHW"];
+    const loginChild = ["pbNvD", "fPMEg", "i3VrA"];
 
     const divClasses = ["Nnq7C", "weEfm"];
     const childDivClasses = ["v1Nh3", "kIKUG", "_bz0w"];
