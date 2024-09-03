@@ -19,13 +19,15 @@ function findUrl() {
         return videoElement.content;
     }
     else {
-        const content = imageElement.content;
-        return content.substring(0, content.lastIndexOf('?'));
+        return imageElement.content;
     }
 }
 
 function findProfileUrl() {
-    const imageElement = document.querySelector("img[class*='css-1u1zie3']");
+    const imageElement = document.querySelector("img");
     const content = imageElement.src;
-    return content.substring(0, content.lastIndexOf('?'));
+
+    const baseUrl = window.location.href.substring(0, window.location.href.lastIndexOf('/'))
+    const idUrl = content.substring(content.lastIndexOf('/'), content.lastIndexOf('?'))
+    return baseUrl + '/media' + idUrl
 }

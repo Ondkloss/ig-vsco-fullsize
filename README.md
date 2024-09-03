@@ -6,9 +6,15 @@ Released on [Chrome Web Store](https://chrome.google.com/webstore/detail/ig+vsco
 
 ![Example usage](example.gif)
 
-Functionality tested on 2020-11-09.
+**This extension will keep breaking, as IG and VSCO keeps changing their DOM. It can be a good starting point for someone who wants to fork, or you could contribute to the code to keep i working. I no longer regularly use this, so I'm dependant on community input to know when it breaks or suggestions.**
+
+Functionality tested on 2024-09-03.
 
 ## Changelog
+
+### 1.3.4
+
+- Adjustments to VSCO to keep some functionality
 
 ### 1.3.3
 
